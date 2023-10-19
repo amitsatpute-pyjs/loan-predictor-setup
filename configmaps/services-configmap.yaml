@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: services-configmap
+  labels:
+    name: services-configmap
+    app: micro-shop
+data:
+  REDIS_HOST: redis-service
+  REDIS_PORT: "6379"
+  SERVER_HOST: server-service
+  SERVER_PORT: "80"
+  SERVER_SERVICE: server-service:80

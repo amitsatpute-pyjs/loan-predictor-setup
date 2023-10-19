@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-deployment
+  labels:
+    name: redis-deployment
+    app: loan-predictor
+spec:
+  selector:
+    matchLabels:
+      name: redis-pod
+      app: loan-predictor
+  replicas: 1   
+  template:
+    metadata:
+      name: redid-pod
+      labels:
+        name: redis-pod
+        app: loan-predictor
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: redis
+        image: redis:latest  
+        ports:
+        - containerPort: 6379

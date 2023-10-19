@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ui-deployment
+  labels:
+    name: ui-deployment
+    app: loan-predictor
+spec:
+  selector:
+    matchLabels:
+      name: ui-pod
+      app: loan-predictor
+  replicas: 1
+  template:
+    metadata:
+      name: ui-pod
+      labels:
+        name: ui-pod
+        app: loan-predictor
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: ui
+        image: ui       
+        ports:
+        - containerPort: 3000
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: VITE_BACKEND_SERVICE
+          valueFrom:
+            configMapKeyRef:
+              name: services-configmap
+              key: SERVER_SERVICE
+
+

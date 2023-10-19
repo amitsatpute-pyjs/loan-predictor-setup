@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: celery-deployment
+  labels:
+    name: celery-deployment
+    app: loan-predictor
+spec:
+  selector:
+    matchLabels:
+      name: celery-pod
+      app: loan-predictor
+  replicas: 1
+  template:
+    metadata:
+      name: celery-pod
+      labels:
+        name: celery-pod
+        app: loan-predictor
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: celery
+        image: celery
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: server-secret
+              key: api-key  
+        - name: REDIS_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: services-configmap
+              key: REDIS_HOST     
+        - name: REDIS_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: services-configmap
+              key: REDIS_PORT
+        - name: SERVER_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: services-configmap
+              key: SERVER_HOST     
+        - name: SERVER_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: services-configmap
+              key: SERVER_PORT
