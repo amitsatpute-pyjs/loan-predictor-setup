@@ -13,16 +13,24 @@ Please follow following steps:
     - it will deploy all services  
 
 
+4. Add hosts (Required step):
+    - open hosts file and add host name whch is mentioned in ingress:
+        > **gedit /etc/hosts** or use other editor like **vi** instead of gedit.
 
 eg:
 ```
 >> kubectl get ing
 
-NAME                 CLASS    HOSTS               ADDRESS      PORTS   AGE
-micro-shop-ingress   <none>   loanpredictor.com   172.20.0.2   80      15h
+NAME                     CLASS    HOSTS              ADDRESS      PORTS   AGE
+loan-predictor-ingress   <none>   loanpredictor.com  172.20.0.2   80      15h
 
 ```
 hosts file
 
+```
+>> sudo gedit /etc/hosts
+
+127.0.0.1	    localhost
+172.20.0.2      loanpredictor.com
 ```
 
