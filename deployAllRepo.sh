@@ -38,7 +38,7 @@ for repo in ${gitrepos[@]}; do
             fi
     else
         echo "Cloning repo."
-        git clone git@github.com:amitsatpute-pyjs/${prefix}-${repo}.git
+        git clone https://github.com/amitsatpute-pyjs/${prefix}-${repo}.git
         # git checkout main
         cd ${prefix}-${repo}
         git checkout main
