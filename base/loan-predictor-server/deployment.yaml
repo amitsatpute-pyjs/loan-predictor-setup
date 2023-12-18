@@ -21,7 +21,7 @@ spec:
       restartPolicy: Always
       containers:
       - name: server
-        image: server:latest  
+        image: santhoshvemaplii/server:latest  
         ports:
         - containerPort: 5000
         imagePullPolicy: IfNotPresent
