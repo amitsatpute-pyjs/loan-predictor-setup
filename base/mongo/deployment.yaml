@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-deployment
+  labels:
+    name: mongo-deployment
+    app: mongo-pod
+spec:
+  selector:
+    matchLabels:
+      name: mongo-pod
+      app: mongo-pod
+  replicas: 1   
+  template:
+    metadata:
+      name: mongo-pod
+      labels:
+        name: mongo-pod
+        app: mongo-pod
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: mongo
+        image: mongo  
+        ports:
+        - containerPort: 27017

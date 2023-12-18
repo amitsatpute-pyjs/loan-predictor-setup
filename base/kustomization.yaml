@@ -6,4 +6,4 @@ resources:
 - ./redis
 - ./loan-predictor-ui
 - ./ingress
-
+- ./mongo
