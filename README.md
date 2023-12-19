@@ -1,4 +1,4 @@
-# Micro-shop-setup
+# Loan predictor setup
 
 Please follow following steps:
 
